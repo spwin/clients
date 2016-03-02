@@ -98,7 +98,7 @@
 
                 <div class="form-group">
                     {{ Form::label('rate_multilingual', 'Rate multilingual:', ['class' => 'control-label']) }}
-                    {{ Form::select('rate_website', $choices, null, ['class' => 'form-control']) }}
+                    {{ Form::select('rate_multilingual', $choices, null, ['class' => 'form-control']) }}
                 </div>
 
                 <div class="form-group">
