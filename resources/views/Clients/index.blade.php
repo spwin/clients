@@ -30,6 +30,7 @@
                         <th>Social</th>
                         <th>Budget</th>
                         <th>Trust</th>
+			<th>Score</th>
 
                         <th>Actions</th>
                     </tr>
@@ -50,7 +51,7 @@
                             <td>{{ $client->rate_social }}</td>
                             <td>{{ $client->rate_budget }}</td>
                             <td>{{ $client->rate_trusted }}</td>
-
+			    <td>{{ $client->score() }}%</td>
                             <td>
                                 <a href="{{ action('ClientsController@edit', $client->id) }}" class="btn btn-xs btn-success">Edit client</a>
                             </td>
