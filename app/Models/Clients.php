@@ -19,7 +19,7 @@ class Clients extends Model
      */
     protected $fillable = ['title', 'web', 'email', 'phone', 'person', 'comments',
         'status_quote_sent', 'status_got_reply', 'status_collaboration', 'status_friend',
-        'rate_website', 'rate_performance', 'rate_design', 'rate_mobile',
+        'language', 'score', 'rate_website', 'rate_performance', 'rate_design', 'rate_mobile',
         'rate_seo', 'rate_multilingual', 'rate_social', 'rate_budget', 'rate_trusted'
     ];
 }

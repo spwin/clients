@@ -23,11 +23,15 @@ class CreateClientsTable extends Migration {
 			$table->string('person', 100);
 			$table->string('comments', 1000);
 
+			$table->float('score', 10, 2);
+
 			// STATUS
 			$table->boolean('status_quote_sent');
 			$table->boolean('status_got_reply');
 			$table->boolean('status_collaboration');
 			$table->boolean('status_friend');
+
+			$table->enum('language', ['LT', 'RU', 'PL', 'EN']);
 
 			// SUMMARY [no, low, normal, good, high]
 			$table->enum('rate_website', [0,1,2,3,4]);

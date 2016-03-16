@@ -71,6 +71,13 @@
                     </label>
                 </div>
 
+                <h3>Choose language</h3>
+
+                <div class="form-group">
+                    {{ Form::label('language', 'Choose language:', ['class' => 'control-label']) }}
+                    {{ Form::select('language', ['LT' => 'LT', 'PL' => 'PL', 'RU' => 'RU', 'EN' => 'EN'], null, ['class' => 'form-control']) }}
+                </div>
+
                 <h3>Rate client</h3>
 
                 <div class="form-group">
