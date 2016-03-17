@@ -30,7 +30,7 @@ class ClientsController extends Controller {
 	 */
 	public function pending()
 	{
-		$clients = Clients::where(['status_quote_sent' => 0, 'archived' => 0])->get();
+		$clients = Clients::where(['status_quote_sent' => 0, 'archived' => 0])->orderBy('score', 'DESC')->get();
         return view('Clients.index')->with(array(
 			'clients' => $clients,
 			'status' => 'pending'
