@@ -17,7 +17,7 @@ class ClientsController extends Controller {
 	 */
 	public function index()
 	{
-		$clients = Clients::all();
+		$clients = Clients::orderBy('score', 'DESC')->get();
 		return view('Clients.index')->with(array(
 			'clients' => $clients
 		));
@@ -30,9 +30,10 @@ class ClientsController extends Controller {
 	 */
 	public function pending()
 	{
-		$clients = Clients::where(['status_quote_sent' => 0])->get();
+		$clients = Clients::where(['status_quote_sent' => 0, 'archived' => 0])->get();
         return view('Clients.index')->with(array(
-			'clients' => $clients
+			'clients' => $clients,
+			'status' => 'pending'
 		));
 	}
 
@@ -41,11 +42,12 @@ class ClientsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function sent()
+	public function contacted()
 	{
-		$clients = Clients::where(['status_quote_sent' => 1])->get();
+		$clients = Clients::where(['status_quote_sent' => 1, 'archived' => 0])->get();
 		return view('Clients.index')->with(array(
-			'clients' => $clients
+			'clients' => $clients,
+			'status' => 'contacted'
 		));
 	}
 
@@ -54,9 +56,13 @@ class ClientsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function canceled()
+	public function archived()
 	{
-		return view('Clients.index')->with(array());
+		$clients = Clients::where(['archived' => 1])->get();
+		return view('Clients.index')->with(array(
+			'clients' => $clients,
+			'status' => 'archived'
+		));
 	}
 
 	/**
@@ -83,7 +89,14 @@ class ClientsController extends Controller {
 		$input['status_got_reply'] = array_key_exists('status_got_reply', $input) ? 1 : 0;
 		$input['status_collaboration'] = array_key_exists('status_collaboration', $input) ? 1 : 0;
 		$input['status_friend'] = array_key_exists('status_friend', $input) ? 1 : 0;
-		Clients::create($input);
+		$client = new Clients();
+		$client->fill($input);
+		$client->setAttribute('score', $client->score());
+		$client->save();
+
+		//$id = Clients::create($input);
+		//Clients::where('id', '=', $id)->update(array('score' => $id));
+
 		Session::flash('flash_message', 'Client successfully added!');
 		return Redirect::action('ClientsController@pending');
 	}
@@ -129,6 +142,7 @@ class ClientsController extends Controller {
 		$input['status_collaboration'] = array_key_exists('status_collaboration', $input) ? 1 : 0;
 		$input['status_friend'] = array_key_exists('status_friend', $input) ? 1 : 0;
 		$client->update($input);
+		$client->setAttribute('score', $client->score());
 		$client->save();
 		Session::flash('flash_message', 'Client successfully edited!');
 		return Redirect::action('ClientsController@pending');

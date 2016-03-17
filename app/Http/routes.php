@@ -6,8 +6,8 @@ Route::group(['prefix' => 'clients', 'middleware' => 'auth'], function () {
     Route::get('edit/{id}', ['uses' =>'ClientsController@edit']);
     Route::post('update/{id}', ['uses' =>'ClientsController@update']);
     Route::get('pending', ['uses' =>'ClientsController@pending']);
-    Route::get('sent', ['uses' =>'ClientsController@sent']);
-    Route::get('canceled', ['uses' =>'ClientsController@canceled']);
+    Route::get('contacted', ['uses' =>'ClientsController@contacted']);
+    Route::get('archived', ['uses' =>'ClientsController@archived']);
 });
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {

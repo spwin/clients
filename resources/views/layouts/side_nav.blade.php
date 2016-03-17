@@ -23,8 +23,11 @@
                     <li {{ (Request::is('*clients/pending*') ? 'class="active"' : '') }}>
                         <a href="{{ action('ClientsController@pending') }}"> Pending clients</a>
                     </li>
-                    <li {{ (Request::is('*clients/sent*') ? 'class="active"' : '') }}>
-                        <a href="{{ action('ClientsController@sent') }}"> Contacted clients</a>
+                    <li {{ (Request::is('*clients/contacted*') ? 'class="active"' : '') }}>
+                        <a href="{{ action('ClientsController@contacted') }}"> Contacted clients</a>
+                    </li>
+                    <li {{ (Request::is('*clients/archived*') ? 'class="active"' : '') }}>
+                        <a href="{{ action('ClientsController@archived') }}"> Archived clients</a>
                     </li>
                 </ul>
             </li>

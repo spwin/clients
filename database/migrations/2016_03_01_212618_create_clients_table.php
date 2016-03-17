@@ -30,6 +30,7 @@ class CreateClientsTable extends Migration {
 			$table->boolean('status_got_reply');
 			$table->boolean('status_collaboration');
 			$table->boolean('status_friend');
+			$table->boolean('archived');
 
 			$table->enum('language', ['LT', 'RU', 'PL', 'EN']);
 

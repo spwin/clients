@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('page_heading','Pending clients')
+@section('page_heading', ucfirst($status).' clients')
 @section('section')
 <!-- /.row -->
 <div class="col-sm-12">
@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>TITLE</th>
                         <th>WEB</th>
+                        <th>Language</th>
                         <th>Friend</th>
                         <th>Website</th>
                         <th>Performance</th>
@@ -41,6 +42,7 @@
                             <td>{{ $client->id }}</td>
                             <td>{{ $client->title }}</td>
                             <td>{{ $client->web }}</td>
+                            <td>{{ $client->language }}</td>
                             <td>{{ $client->status_friend ? 'FRIEND' : '' }}</td>
                             <td>{{ $client->rate_website }}</td>
                             <td>{{ $client->rate_performance }}</td>
@@ -51,7 +53,7 @@
                             <td>{{ $client->rate_social }}</td>
                             <td>{{ $client->rate_budget }}</td>
                             <td>{{ $client->rate_trusted }}</td>
-			    <td>{{ $client->score() }}%</td>
+			                <td>{{ $client->score() }}%</td>
                             <td>
                                 <a href="{{ action('ClientsController@edit', $client->id) }}" class="btn btn-xs btn-success">Edit client</a>
                             </td>
