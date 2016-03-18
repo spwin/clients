@@ -23,13 +23,6 @@
                         <th>email</th>
                         <th>Language</th>
                         <th>Friend</th>
-                        {{--<th>Website</th>
-                        <th>Performance</th>
-                        <th>Design</th>
-                        <th>Mobile</th>
-                        <th>SEO</th>
-                        <th>Multilingual</th>
-                        <th>Social</th>--}}
                         <th>Budget</th>
                         <th>Trust</th>
 			<th>Score</th>
@@ -46,13 +39,6 @@
                             <td>{{ $client->email }}</td>
                             <td>{{ $client->language }}</td>
                             <td>{{ $client->status_friend ? 'FRIEND' : '' }}</td>
-                            {{--<td>{{ $client->rate_website }}</td>
-                            <td>{{ $client->rate_performance }}</td>
-                            <td>{{ $client->rate_design }}</td>
-                            <td>{{ $client->rate_mobile }}</td>
-                            <td>{{ $client->rate_seo }}</td>
-                            <td>{{ $client->rate_multilingual }}</td>
-                            <td>{{ $client->rate_social }}</td>--}}
                             <td>{{ $client->rate_budget }}</td>
                             <td>{{ $client->rate_trusted }}</td>
 			                <td>{{ $client->score() }}%</td>
