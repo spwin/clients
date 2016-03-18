@@ -20,6 +20,7 @@
                         <th>ID</th>
                         <th>TITLE</th>
                         <th>WEB</th>
+                        <th>email</th>
                         <th>Language</th>
                         <th>Friend</th>
                         <th>Website</th>
@@ -42,6 +43,7 @@
                             <td>{{ $client->id }}</td>
                             <td>{{ $client->title }}</td>
                             <td>{{ $client->web }}</td>
+                            <td>{{ $client->email }}</td>
                             <td>{{ $client->language }}</td>
                             <td>{{ $client->status_friend ? 'FRIEND' : '' }}</td>
                             <td>{{ $client->rate_website }}</td>
